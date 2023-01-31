@@ -1,0 +1,16 @@
+{
+	"Add new snippet": {
+		"prefix": "snip",
+		"body": [
+			"---",
+			"title: ${1:component}",
+			"prefix: wp.${2:package}|${2:package}|${1:component}",
+			"description: ${3:Insert a ${1:component}}",
+			"---",
+			"",
+			"\\$LINE_COMMENT @see ${4:reference-link}",
+			"",
+			"${5:snippet}"
+		],
+	}
+}

@@ -1,0 +1,92 @@
+{
+  "Insert WordPress debug constants": {
+    "prefix": [
+      "rw",
+      "wp",
+      "debug"
+    ],
+    "description": "Inserts the WP_DEBUG and WP_DEBUG_LOG and other debug related constants.",
+    "body": [
+      "$LINE_COMMENT Enable WP_DEBUG mode\r",
+      "define( 'WP_DEBUG', true );\r",
+      "$LINE_COMMENT Enable Debug logging to the /wp-content/debug.log file\r",
+      "define( 'WP_DEBUG_LOG', true );\r",
+      "$LINE_COMMENT Disable display of errors and warnings\r",
+      "define( 'WP_DEBUG_DISPLAY', false );\r",
+      "@ini_set( 'display_errors', 0 );\r",
+      "$LINE_COMMENT Use dev versions of core JS and CSS files (only needed if you are modifying these core files)\r",
+      "define( 'SCRIPT_DEBUG', true )"
+    ]
+  },
+  "Enqueue a script from a plugin in the block editor": {
+    "prefix": [
+      "rw",
+      "wp",
+      "php",
+      "enqueue-from-plugin"
+    ],
+    "description": "Enqueues a script in the block editor stored in a plugin",
+    "body": [
+      "$LINE_COMMENT Enqueue ${2:filename} from a plugin\r",
+      "add_action(\r",
+      "\t'${1:enqueue_block_editor_assets}',\r",
+      "\tfunction() {\r",
+      "\t\t$$assets_file = plugin_dir_path( __FILE__ ) . '/build/${2:filename}.asset.php';\r",
+      "\r",
+      "\t\tif ( file_exists( $assets_file ) ) {\r",
+      "\t\t\t$$assets = include $$assets_file;\r",
+      "\t\t\twp_enqueue_script(\r",
+      "\t\t\t\t'${3:script-handle}',\r",
+      "\t\t\t\tplugin_dir_url( __FILE__ ) . '/build/${2:filename}.js',\r",
+      "\t\t\t\t$$assets['dependencies'],\r",
+      "\t\t\t\t$$assets['version'],\r",
+      "\t\t\t\ttrue\r",
+      "\t\t\t);\r",
+      "\t\t}\r",
+      "\t}\r",
+      ");"
+    ]
+  },
+  "Enqueue a script from a theme in the block editor": {
+    "prefix": [
+      "rw",
+      "wp",
+      "php",
+      "enqueue-from-plugin"
+    ],
+    "description": "Enqueues a script in the block editor stored in a theme",
+    "body": [
+      "$LINE_COMMENT Enqueue ${2:filename} from a theme.\r",
+      "add_action(\r",
+      "\t'${1:enqueue_block_editor_assets}',\r",
+      "\tfunction() {\r",
+      "\t\t$$assets_file = get_stylesheet_directory(). '/build/${2:filename}.asset.php';\r",
+      "\r",
+      "\t\tif ( file_exists( $assets_file ) ) {\r",
+      "\t\t\t$$assets = include $$assets_file;\r",
+      "\t\t\twp_enqueue_script(\r",
+      "\t\t\t\t'${3:script-handle}',\r",
+      "\t\t\t\tget_stylesheet_directory_uri() . '/build/${2:filename}.js',\r",
+      "\t\t\t\t$$assets['dependencies'],\r",
+      "\t\t\t\t$$assets['version'],\r",
+      "\t\t\t\ttrue\r",
+      "\t\t\t);\r",
+      "\t\t}\r",
+      "\t}\r",
+      ");"
+    ]
+  },
+  "Enqueue a viewScript file": {
+    "prefix": [
+      "rw",
+      "wp",
+      "enqueue",
+      "viewScript"
+    ],
+    "description": "Enqueue the viewScript file for a dynamic block",
+    "body": [
+      "$LINE_COMMENT Naming convention: '{namespace}-{blockname}-view-script\r",
+      "wp_enqueue_script( '${1:namespace}-${2:blockname}-view-script' );"
+    ]
+  }
+}

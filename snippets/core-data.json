@@ -1,0 +1,29 @@
+{
+  "getCurrentUser": {
+    "prefix": [
+      "rw",
+      "wp_coreData",
+      "getCurrentUser"
+    ],
+    "description": "Returns the current user",
+    "body": [
+      "$LINE_COMMENT @see https://developer.wordpress.org/block-editor/reference-guides/data/data-core/#getcurrentuser\r",
+      "\r",
+      "import { store as coreDataStore } from '@wordpress/core-data';\r",
+      "import { useSelect } from '@wordpress/data';\r",
+      "import { sprintf, __ } from '@wordpress/i18n';\r",
+      "\r",
+      "const ExampleComponent = () => {\r",
+      "\tconst currentUser = useSelect( ( select ) =>\r",
+      "\t\tselect( coreDataStore ).getCurrentUser()\r",
+      "\t);\r",
+      "\r",
+      "\treturn currentUser ? (\r",
+      "\t\t<div>{ sprintf( __( 'Hello, %s!' ), currentUser.name ) }</div>\r",
+      "\t\t) : (\r",
+      "\t\t<div>{ __( 'Loading User information…' ) }</div>\r",
+      "\t);\r",
+      " };"
+    ]
+  }
+}

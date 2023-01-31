@@ -1,0 +1,80 @@
+{
+  "InspectorControls": {
+    "prefix": [
+      "rw",
+      "wp_blockEditor",
+      "InspectorControls"
+    ],
+    "description": "Inspector Controls appear in the post settings sidebar when a block is being edited",
+    "body": [
+      "$LINE_COMMENT @see https://github.com/WordPress/gutenberg/tree/trunk/packages/block-editor/src/components/inspector-controls\r",
+      "\r",
+      "import { InspectorControls } from '@wordpress/block-editor';\r",
+      "\r",
+      "<InspectorControls>\r",
+      "\t$TM_SELECTED_TEXT\r",
+      "</InspectorControls>"
+    ]
+  },
+  "RichText.Content": {
+    "prefix": [
+      "rw",
+      "wp_blockEditor",
+      "block-editor",
+      "RichText"
+    ],
+    "description": "Inserts a RichText component.",
+    "body": [
+      "$LINE_COMMENT @see https://github.com/WordPress/gutenberg/blob/trunk/packages/block-editor/src/components/rich-text/README.md\r",
+      "\r",
+      "import { RichText } from '@wordpress/block-editor';\r",
+      "\r",
+      "<RichText.Content ${3:tagName=\"${4:div}\"} value={${1:value}} />"
+    ]
+  },
+  "RichText": {
+    "prefix": [
+      "rw",
+      "wp_blockEditor",
+      "block-editor",
+      "RichText"
+    ],
+    "description": "Inserts a RichText component.",
+    "body": [
+      "$LINE_COMMENT @see https://github.com/WordPress/gutenberg/blob/trunk/packages/block-editor/src/components/rich-text/README.md\r",
+      "\r",
+      "import { RichText } from '@wordpress/block-editor';\r",
+      "\r",
+      "<RichText\r",
+      "\tvalue={${1:value}}\r",
+      "\tonChange={ ( content ) => setAttributes( { content } ) }\r",
+      "\t${3:tagName=\"${4:div}\"}\r",
+      "\t${4:placeholder=\"${5:Placeholder Text\"}\r",
+      "\t${6:multiline={${7:boolean|string}}}\r",
+      "\t${8:onSplit={(value) => console.log(value)}}\r",
+      "\t${9:onReplace]={(blocks) => console.log(blocks)}}\r",
+      "\t${10:onMerge]={(forward) => console.log(forward)}}\r",
+      "\t${11:onRemove]={(forward) => console.log(forward)}}\r",
+      "\t${12:allowedFormats]={[\r",
+      "\t\t'core/bold',\r",
+      "\t\t'core/code',\r",
+      "\t\t'core/image',\r",
+      "\t\t'core/italic',\r",
+      "\t\t'core/link',\r",
+      "\t\t'core/strikethrough',\r",
+      "\t\t'core/underline',\r",
+      "\t\t'core/text-color',\r",
+      "\t\t'core/subscript',\r",
+      "\t\t'core/superscript',\r",
+      "\t\t'core/keyboard',\r",
+      "\t\t]\r",
+      "\t}}\r",
+      "\t${13:withoutInteractiveFormatting={${14:true|false}}}\r",
+      "\t${15:isSelected={${16:true|false}}}\r",
+      "\t${17:autocompleters={${18:[]}}}\r",
+      "\t${19:preserveWhiteSpace={${20:true|false}}}\r",
+      "\t${21:className=\"${22:class-name}\"}\r",
+      "/>"
+    ]
+  }
+}

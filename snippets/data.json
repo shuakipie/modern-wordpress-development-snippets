@@ -1,0 +1,19 @@
+{
+  "getEmbedPreview": {
+    "prefix": [
+      "rw",
+      "wp_data",
+      "getEmbedPreview"
+    ],
+    "description": "add description",
+    "body": [
+      "$LINE_COMMENT @see reference-link\r",
+      "import { store as coreDataStore } from '@wordpress/core-data';\r",
+      "import { useSelect } from '@wordpress/data';\r",
+      "\r",
+      "const embedPreview = useSelect( ( select ) =>\r",
+      "\tselect( coreDataStore ).getEmbedPreview( {$1} )\r",
+      ");"
+    ]
+  }
+}

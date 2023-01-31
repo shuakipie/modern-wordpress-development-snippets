@@ -1,0 +1,95 @@
+{
+  "Block Edit component": {
+    "prefix": [
+      "rw",
+      "block",
+      "edit"
+    ],
+    "description": "Create an Edit component for custom block development.",
+    "body": [
+      "/**\r",
+      " * React hook that is used to mark the block wrapper element.\r",
+      " * It provides all the necessary props like the class name.\r",
+      " *\r",
+      " * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps\r",
+      " */\r",
+      "import { useBlockProps } from '@wordpress/block-editor';\r",
+      "\r",
+      "/**\r",
+      " * The edit function describes the structure of your block in the context of the\r",
+      " * editor. This represents what the editor will render when the block is used.\r",
+      " *\r",
+      " * @see https://developer.wordpress.org/block-editor/developers/block-api/block-edit-save/#edit\r",
+      " *\r",
+      " * @return {WPElement} Element to render.\r",
+      " */\r",
+      "export default function Edit() {\r",
+      "\treturn (\r",
+      "\t\t<p { ...useBlockProps() }>\r",
+      "\t\t\t<div>Edit</div>\r",
+      "\t\t</p>\r",
+      "\t);\r",
+      "}"
+    ]
+  },
+  "Block Save component": {
+    "prefix": [
+      "rw",
+      "block",
+      "save"
+    ],
+    "description": "Create a Save component for custom block development.",
+    "body": [
+      "/**\r",
+      " * React hook that is used to mark the block wrapper element.\r",
+      " * It provides all the necessary props like the class name.\r",
+      " *\r",
+      " * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps\r",
+      " */\r",
+      "import { useBlockProps } from '@wordpress/block-editor';\r",
+      "\r",
+      "/**\r",
+      " * The save function defines the way in which the different attributes should\r",
+      " * be combined into the final markup, which is then serialized by the block\r",
+      " * editor into `post_content`.\r",
+      " *\r",
+      " * @see https://developer.wordpress.org/block-editor/developers/block-api/block-edit-save/#save\r",
+      " *\r",
+      " * @return {WPElement} Element to render.\r",
+      " */\r",
+      "export default function save() {\r",
+      "\treturn (\r",
+      "\t\t<p { ...useBlockProps.save() }>\r",
+      "\t\t\t<div>Save</div>\r",
+      "\t\t</p>\r",
+      "\t);\r",
+      "}"
+    ]
+  },
+  "Retrieve from the WordPress datastore": {
+    "prefix": [
+      "rw",
+      "wp",
+      "getEntityRecords",
+      "get-data"
+    ],
+    "description": "Add getEntityRecords selector with isLoading and invalidateResolution.",
+    "body": [
+      "import { useSelect, useDispatch } from '@wordpress/data';\r",
+      "\r",
+      "const { data, isLoading } = useSelect((select) => {\r",
+      "\treturn {\r",
+      "\t\tdata: select('core').getEntityRecords('${1:entity}', '${2:type}', {${3}}),\r",
+      "\t\tisLoading: select('core/data').isResolving('core', 'getEntityRecords', ['${1:entity}', '${2:type}', {${3}}]),\r",
+      "\t};\r",
+      "});\r",
+      "\r",
+      "const { invalidateResolution } = useDispatch('core/data');\r",
+      "\r",
+      "$LINE_COMMENT Call this function when needed to re-trigger the getEntityRecords call.\r",
+      "const reQuery = () => {\r",
+      "\tinvalidateResolution('core', 'getEntityRecords', ['${1:entity}', '${2:type}', {${3}}]);\r",
+      "};"
+    ]
+  }
+}
